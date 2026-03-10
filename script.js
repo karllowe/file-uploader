@@ -6,6 +6,7 @@ async function main() {
     data: {
       name: "Alice",
       email: "alice@prisma.io",
+      password: "test",
       posts: {
         create: {
           title: "Hello World",

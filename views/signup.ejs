@@ -1,0 +1,83 @@
+<html>
+    <body>
+        <a href="/">Home</a>
+        <h2>Sign up:</h2>
+
+        <% 
+        const errorFor = (field) => errors.find(e => e.path === field);
+        const emailError = errorFor("email");
+        const firstNameError = errorFor("first_name");
+        const lastNameError = errorFor("last_name");
+        const passwordError = errorFor("password");
+        const passwordConfirmationError = errorFor("passwordConfirmation")
+        %>
+
+        <form action="/signup" method="POST" class="form">
+            <div class="formRow">
+                <label for="firstname">First name</label>
+                <input 
+                    type="text" 
+                    maxlength="255" 
+                    id="firstName" 
+                    name="first_name" 
+                    value="<%= values.first_name ?? '' %>"
+                    required
+                >
+                <% if (firstNameError) { %>
+                    <p id ="firstname-error" class="fieldError" role="alert">
+                        <%= firstNameError.msg %>
+                    </p>
+                <%} %>
+            </div>
+            <div>
+                <label for="lastName">Last name</label>
+                <input 
+                    type="text" 
+                    maxlength="255" 
+                    id="lastName" 
+                    name="last_name" 
+                    value="<%= values.last_name ?? '' %>"
+                    required
+                >
+                 <% if (lastNameError) { %>
+                    <p id ="lastname-error" class="fieldError" role="alert">
+                        <%= lastNameError.msg %>
+                    </p>
+                <%} %>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    maxlength="255" 
+                    id="email" 
+                    name="email" 
+                    value="<%= values.email ?? '' %>"
+                    required
+                >
+                <% if (emailError) { %>
+                <p id="email-error" class="fieldError" role="alert">
+                    <%= emailError.msg %>
+                </p>
+                <% } %>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <% if (passwordError) { %>
+                    <p id ="password-error" class="fieldError" role="alert">
+                        <%= passwordError.msg %>
+                    </p>
+                <%} %>
+                <label for="passwordConfirmation">Confirm password</label>
+                <input type="password" id="passwordConfirmation" name="passwordConfirmation" required>
+                <% if (passwordConfirmationError) { %>
+                    <p id ="passwordConfirmation-error" class="fieldError" role="alert">
+                        <%= passwordConfirmationError.msg %>
+                    </p>
+                <%} %>
+            </div>
+            <button type="Submit">Sign up</button>
+        </form>
+    </body>
+</html>

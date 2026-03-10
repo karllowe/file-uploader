@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 3000;
 const connectionString = `${process.env.DATABASE_URL}`;
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
-
 const indexRouter = require("./routes/indexRouter");
+const signupRouter = require("./routes/signupRouter");
 const pool = require("./db/pool");
 const configurePassport = require("./config/passport");
 require('dotenv').config();
@@ -54,7 +54,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/", indexRouter)
+app.use("/", indexRouter);
+app.use("/signup", signupRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);
