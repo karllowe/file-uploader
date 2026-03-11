@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files page</title>
+</head>
+<body>
+    <h1>Files</h1>
+    <div>
+        <h2>Welcome back <%= currentUser.name %></h2>
+        <a href="/login/logout">log out</a>
+    </div>
+    <div>
+        <h3>Upload a file</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="id">Select file:</label>
+            <input type="file" id="file" name="file">
+            <button type="Submit">Upload</button>
+        </form>
+    </div>
+    <div>
+        <div>
+            <h3><%= folderId%></h3>
+            <% if (folderInfo.parentId) {%>  
+                <a href="/filesPage/<%= folderInfo.parentId%>">Back</a>
+            <%} %>
+        </div>
+        <% if (folders) {%>
+            <ul>
+                <%folders.map((folder) => {%>
+                    <li>
+                        <div>
+                            <a href="/filesPage/<%= folder.id %>">Folder: <%=folder.name %></a>
+                        </div>
+                    </li>    
+                <%}) %>
+            </ul>
+        <%} %>
+        <% if (files) {%>
+            <ul>
+                <%files.map((file) => {%>
+                    <li>
+                        <div>
+                            <%=file.filename %>
+                        </div>
+                    </li>    
+                <%}) %>
+            </ul>
+        <%} %>
+        <% if (
+            (!folders || folders.length ===0) && 
+            (!files || files.length ===0)
+            ) {%> 
+            <p>No contents</p>
+        <%}
+        
+        %>
+    </div>
+</body>
+</html>

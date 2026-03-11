@@ -7,37 +7,22 @@
 </head>
 <body>
     <h1>File uploader</h1>
-    <% if (locals.currentUser) {%>
-        <div>
-            <h2>Welcome back <%= currentUser.name %></h2>
-            <a href="/login/logout">log out</a>
-        </div>
-        <div>
-            <h3>Upload a file</h3>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <label for="id">Select file:</label>
-                <input type="file" id="file" name="file">
-                <button type="Submit">Upload</button>
-            </form>
-        </div>
-    <%} else {%>
-        <div>
-            <a href="/signup" class="btn">Sign up</a>
-        </div>
-        <div>
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                <div class="formRow">
-                    <label for="email">Email</label>
-                    <input type="text" id="email" name="email" placeholder="email">
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
-                </div>
-                <button type="submit">Log in</button>
-            </form>        
-        </div>
-    <%}%>
+    <div>
+        <a href="/signup" class="btn">Sign up</a>
+    </div>
+    <div>
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            <div class="formRow">
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <button type="submit">Log in</button>
+        </form>        
+    </div>
 </body>
 </html>

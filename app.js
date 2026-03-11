@@ -58,7 +58,8 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
-app.use("/upload", fileRouter)
+app.use("/upload", fileRouter);
+app.use("/filesPage", fileRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

@@ -2,7 +2,7 @@ const passport = require("passport");
 
 async function loginUser(req, res, next) {
     return passport.authenticate("local", {
-        successRedirect: "/",
+        successRedirect: "/filesPage/1",
         failureRedirect: "/"
     }) (req, res, next)
 };

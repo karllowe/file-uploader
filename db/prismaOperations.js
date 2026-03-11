@@ -37,9 +37,34 @@ async function listFolders() {
     return folders
 }
 
+async function getFolderContents(folderId) {
+    const folders = await prisma.folders.findMany({
+        where: {parentId: folderId},
+        orderBy: {name: "asc"},
+    })
+
+    const files = await prisma.files.findMany({
+        where: {folderId: folderId},
+        orderBy: {filename: "asc"},
+    });
+
+    return {folders, files}
+}
+
+async function getFolderInfo(folderId) {
+    const folder = await prisma.folders.findUnique({
+        where: {id: folderId}
+    })
+
+    return folder
+}
+
+
 module.exports={
     signupUser,
     createFolder,
     createFile,
-    listFolders
+    listFolders,
+    getFolderContents,
+    getFolderInfo
 }
