@@ -13,7 +13,7 @@ const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
-const pool = require("./db/pool");
+const loginRouter = require("./routes/loginRouter");
 const configurePassport = require("./config/passport");
 require('dotenv').config();
 
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
     next()
 })
 
-configurePassport(passport, pool);
+configurePassport(passport, prisma);
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
@@ -56,6 +56,7 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
+app.use("/login", loginRouter);
 
 app.use((err, req, res, next) => {
   console.error(err);

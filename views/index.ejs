@@ -7,6 +7,29 @@
 </head>
 <body>
     <h1>File uploader</h1>
-    <a href="/signup" class="btn">Sign up</a>
+    <% if (locals.currentUser) {%>
+        <div>
+            <h2>Welcome back <%= currentUser.name %></h2>
+            <a href="/login/logout">log out</a>
+        </div>    
+    <%} else {%>
+        <div>
+            <a href="/signup" class="btn">Sign up</a>
+        </div>
+        <div>
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div class="formRow">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="email">
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <button type="submit">Log in</button>
+            </form>        
+        </div>
+    <%}%>
 </body>
 </html>
