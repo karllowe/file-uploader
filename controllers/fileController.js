@@ -23,7 +23,7 @@ async function uploadFile(req, res, next) {
     const fileName = req.file.originalname;
     console.log(fileName);
     await db.createFile(fileName, folderId);
-    res.redirect("/filesPage/1")
+    res.redirect(`/filesPage/${folderId}`)
 
     // try {
     //     console.log(req.file, req.body);
