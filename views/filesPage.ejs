@@ -22,17 +22,20 @@
     </div>
     <div class="fileDiv">
         <div class="explorerHeader">
-            <h3><%= folderInfo.name%></h3>
             <% if (folderInfo.parentId) {%>  
-                <a href="/filesPage/<%= folderInfo.parentId%>">Back</a>
+                <a href="/filesPage/<%= folderInfo.parentId%>">
+                    <img src="/icons/backArrow.png" alt="">
+                </a>
             <%} %>
+            <h3><%= folderInfo.name%></h3>
         </div>
         <% if (folders) {%>
             <ul>
                 <%folders.map((folder) => {%>
                     <li>
-                        <div>
-                            <a href="/filesPage/<%= folder.id %>">Folder: <%=folder.name %></a>
+                        <div class="folderRow">
+                            <img src="/icons/folderIcon.png" alt="">
+                            <a href="/filesPage/<%= folder.id %>"><%=folder.name %></a>
                         </div>
                     </li>    
                 <%}) %>
@@ -42,7 +45,8 @@
             <ul>
                 <%files.map((file) => {%>
                     <li>
-                        <div>
+                        <div class="folderRow">
+                            <img src="/icons/fileIcon.png" alt="">
                             <%=file.filename %>
                         </div>
                     </li>    

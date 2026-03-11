@@ -8,10 +8,25 @@ body {
     gap: 8px;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
+    padding-left: 8px;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
 .filesHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 12px;
 }
 
 .fileDiv {
@@ -27,4 +42,26 @@ body {
     gap: 8px;
     padding: 4px 8px;
     margin-bottom: 8px;
+}
+
+.explorerHeader a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.explorerHeader  img {
+    width: 18px;
+}
+
+.folderRow {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 4px;
+}
+
+img {
+    width: 24px;
 }
