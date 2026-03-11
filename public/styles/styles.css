@@ -25,7 +25,8 @@ li {
 .filesHeader {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 8px;
     margin-bottom: 12px;
 }
 
@@ -44,14 +45,17 @@ li {
     margin-bottom: 8px;
 }
 
-.explorerHeader a {
+.explorerHeader a, .filesHeader a {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.explorerHeader  img {
+.newFolderButton {
+    margin-left: auto;
+}
+.explorerHeader  img, .filesHeader img {
     width: 18px;
 }
 

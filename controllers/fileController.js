@@ -25,9 +25,16 @@ async function uploadFile(req, res, next) {
     await db.createFile(fileName, folderId);
     res.redirect(`/filesPage/${folderId}`)
 }
+
+async function newFolder(req, res) {
+    const folderId = req.params.folderId ? Number(req.params.folderId) : null;
+    await db.createFolder("New folder", folderId);
+    res.redirect(`/filesPage/${folderId}`)
+}
     
 module.exports = {
         uploadFile,
         getAllFiles,
-        loadFilesPage
+        loadFilesPage,
+        newFolder
     };

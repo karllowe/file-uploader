@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-    <h1>Files</h1>
+    <h1>File uploader</h1>
     <div class="filesHeader">
         <h2>Welcome back <%= currentUser.name %></h2>
-        <a href="/login/logout">log out</a>
+        <a href="/login/logout">
+            <img src="/icons/logout.png" alt="">
+        </a>
     </div>
     <div>
         <h3>Upload a file</h3>
@@ -28,6 +30,9 @@
                 </a>
             <%} %>
             <h3><%= folderInfo.name%></h3>
+            <a href="/filesPage/newFolder/<%= folderId %>" class="newFolderButton">
+                <img src="/icons/newFolder.png">
+            </a>
         </div>
         <% if (folders) {%>
             <ul>

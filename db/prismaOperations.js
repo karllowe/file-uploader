@@ -55,7 +55,6 @@ async function getFolderInfo(folderId) {
     const folder = await prisma.folders.findUnique({
         where: {id: folderId}
     })
-
     return folder
 }
 
