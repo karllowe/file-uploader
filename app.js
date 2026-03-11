@@ -14,6 +14,7 @@ const prisma = new PrismaClient({ adapter });
 const indexRouter = require("./routes/indexRouter");
 const signupRouter = require("./routes/signupRouter");
 const loginRouter = require("./routes/loginRouter");
+const fileRouter = require("./routes/fileRouter");
 const configurePassport = require("./config/passport");
 require('dotenv').config();
 
@@ -57,6 +58,7 @@ app.use((req, res, next) => {
 app.use("/", indexRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/upload", fileRouter)
 
 app.use((err, req, res, next) => {
   console.error(err);
