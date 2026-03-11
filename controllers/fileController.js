@@ -24,20 +24,8 @@ async function uploadFile(req, res, next) {
     console.log(fileName);
     await db.createFile(fileName, folderId);
     res.redirect(`/filesPage/${folderId}`)
-
-    // try {
-    //     console.log(req.file, req.body);
-    //     res.status(200).json({
-    //         message: "File received",
-    //         file: req.file,
-    //         body: req.body,
-    //     });
-    // } catch (err) {
-    //     next(err)
-    // }
 }
     
-
 module.exports = {
         uploadFile,
         getAllFiles,

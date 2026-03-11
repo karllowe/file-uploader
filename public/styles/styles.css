@@ -1,0 +1,30 @@
+h1, h2, h3, p, ul, li {
+    margin: 0px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filesHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fileDiv {
+    border: 1px solid grey;
+    padding: 0px 0px 8px 0px;    
+}
+
+.explorerHeader {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+}
