@@ -1,50 +1,8 @@
 import { prisma } from "./lib/prisma.js";
+import {createFile}  from "./db/prismaOperations.js";
+import {createFolder}  from "./db/prismaOperations.js";
 
-async function main() {
-  // Create a new user with a post
-  const user = await prisma.user.create({
-    data: {
-      name: "Alice",
-      email: "alice@prisma.io",
-      password: "test",
-      posts: {
-        create: {
-          title: "Hello World",
-          content: "This is my first post!",
-          published: true,
-        },
-      },
-    },
-    include: {
-      posts: true,
-    },
-  });
-  console.log("Created user:", user);
-
-  // Fetch all users with their posts
-  const allUsers = await prisma.user.findMany({
-    include: {
-      posts: true,
-    },
-  });
-  console.log("All users:", JSON.stringify(allUsers, null, 2));
-}
-
-async function createDefaultFolderAndFile() {
-  // create a new folder
-  const folder = await prisma.folders.create({
-    data: {
-      name: "Home",
-      files: {
-        create: [{
-          filename: "test"
-        }]
-      }
-    }
-  })
-}
-
-createDefaultFolderAndFile()
+createFolder("Default")
   .then(async () => {
     await prisma.$disconnect();
   })
@@ -54,12 +12,12 @@ createDefaultFolderAndFile()
     process.exit(1);
   })
 
-// main()
-//   .then(async () => {
-//     await prisma.$disconnect();
-//   })
-//   .catch(async (e) => {
-//     console.error(e);
-//     await prisma.$disconnect();
-//     process.exit(1);
-//   });
+createFile("test", 1)
+  .then(async () => {
+    await prisma.$disconnect();
+  })
+  .catch(async (e) => {
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
+  })
