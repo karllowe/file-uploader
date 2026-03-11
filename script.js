@@ -30,7 +30,21 @@ async function main() {
   console.log("All users:", JSON.stringify(allUsers, null, 2));
 }
 
-main()
+async function createDefaultFolderAndFile() {
+  // create a new folder
+  const folder = await prisma.folders.create({
+    data: {
+      name: "Home",
+      files: {
+        create: [{
+          filename: "test"
+        }]
+      }
+    }
+  })
+}
+
+createDefaultFolderAndFile()
   .then(async () => {
     await prisma.$disconnect();
   })
@@ -38,4 +52,14 @@ main()
     console.error(e);
     await prisma.$disconnect();
     process.exit(1);
-  });
+  })
+
+// main()
+//   .then(async () => {
+//     await prisma.$disconnect();
+//   })
+//   .catch(async (e) => {
+//     console.error(e);
+//     await prisma.$disconnect();
+//     process.exit(1);
+//   });

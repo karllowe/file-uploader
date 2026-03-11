@@ -35,7 +35,6 @@ model Session {
   data      String  
   expiresAt DateTime
 }
-
 model Files {
   id        Int     @id @default(autoincrement())
   filename  String
@@ -43,7 +42,6 @@ model Files {
   folderId  Int     
   @@index([folderId])
 }
-
 model Folders {
   id        Int     @id @default(autoincrement())
   name      String  
