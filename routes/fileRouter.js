@@ -6,6 +6,6 @@ const isAuth = require("../config/authMiddleware").isAuth;
 
 fileRouter.get("/", isAuth, fileController.loadFilesPage);
 fileRouter.get("/:folderId", isAuth, fileController.loadFilesPage);
-fileRouter.post("/", upload.single("file"), fileController.uploadFile);
+fileRouter.post("/:folderId", upload.single("file"), fileController.uploadFile);
 
 module.exports = fileRouter;
