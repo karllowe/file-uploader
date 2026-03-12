@@ -40,6 +40,10 @@ model Files {
   filename  String
   folder    Folders @relation(fields: [folderId], references: [id], onDelete: Cascade)
   folderId  Int     
+  bucket    String?
+  storagePath String?
+  mimeType  String?
+  size      Int?
   @@index([folderId])
 }
 model Folders {

@@ -53,6 +53,9 @@
                         <div class="folderRow">
                             <img src="/icons/fileIcon.png" alt="">
                             <%=file.filename %>
+                            <a href="/filesPage/download/<%= file.id%>">
+                                <img src="/icons/download.png" alt="">
+                            </a>
                         </div>
                     </li>    
                 <%}) %>

@@ -1,3 +1,4 @@
+const { storage } = require("../config/supabase.js");
 const {prisma} = require("../lib/prisma.js");
 
 async function signupUser(name, email, password) {
@@ -19,7 +20,7 @@ async function createFolder(folderName, folderParentId){
     })
 }
 
-async function createFile(fileName, folderId) {
+async function createFile(fileName, folderId, bucket, storagePath, mimeType, size) {
     const file = await prisma.files.create({
         data:{
             filename: fileName,
@@ -27,7 +28,11 @@ async function createFile(fileName, folderId) {
                 connect: {
                     id: folderId
                 }
-            }
+            },
+            bucket: bucket,
+            storagePath: storagePath,
+            mimeType: mimeType,
+            size: size
         }
     })
 }
@@ -58,6 +63,13 @@ async function getFolderInfo(folderId) {
     return folder
 }
 
+async function getFileById(fileId) {
+    const file = await prisma.files.findUnique({
+        where: {id: fileId}
+    })
+    return file
+}
+
 
 module.exports={
     signupUser,
@@ -65,5 +77,6 @@ module.exports={
     createFile,
     listFolders,
     getFolderContents,
-    getFolderInfo
+    getFolderInfo,
+    getFileById
 }
