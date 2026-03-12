@@ -65,8 +65,9 @@ async function uploadFile(req, res, next) {
 async function downloadFile(req, res, next) {
     try{
         const fileId = Number(req.params.fileId);
-        const file = await db.getFileById(fileId);
+        if (!Number.isInteger(fileId)) return res.status(400).send("Invalid file id");
 
+        const file = await db.getFileById(fileId);
         if (!file) return res.status(400).send("Not found");
 
         const {data, error} = await supabase.storage
